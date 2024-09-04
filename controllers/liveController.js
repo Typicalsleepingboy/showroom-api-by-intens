@@ -5,7 +5,6 @@ const getJKT48Lives = async (req, res) => {
     try {
         const data = await fetchData('https://www.showroom-live.com/api/live/onlives');
         
-        // Filter only JKT48 lives and remove duplicates by live_id
         const jkt48Lives = uniqueBy(data.onlives.flatMap((genre) =>
             genre.lives.filter((live) => live.room_url_key && live.room_url_key.startsWith('JKT48'))
         ), 'live_id');
