@@ -1,8 +1,9 @@
 const express = require('express');
 const { getJKT48Lives } = require('../controllers/liveController');
+const apiLimiter = require('../middlewares/rateLimiter');
 
 const router = express.Router();
 
-router.get('/jkt48-lives', getJKT48Lives);
+router.get('/jekatepatlapan', apiLimiter, getJKT48Lives);
 
 module.exports = router;
