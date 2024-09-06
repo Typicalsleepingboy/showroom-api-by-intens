@@ -9,8 +9,9 @@ const getJKT48Lives = async (req, res) => {
             genre.lives.filter((live) => live.room_url_key && live.room_url_key.startsWith('JKT48'))
         ), 'live_id');
         
+        // If there are no JKT48 live streams, return an empty array
         if (jkt48Lives.length === 0) {
-            return res.status(200).json({ message: "No JKT48 members are live on Showroom" });
+            return res.status(200).json([]);
         }
 
         res.json(jkt48Lives);
